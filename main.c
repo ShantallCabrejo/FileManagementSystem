@@ -11,7 +11,9 @@ int main()
         printf("\nFile Management System\n");
         printf("1. Create File\n");
         printf("2. Open File\n");
-        printf("3. Exit\n");
+	printf("3. Close File\n");
+	printf("4. Search File\n");
+        printf("5. Exit\n");
         printf("Enter choice: ");
         scanf("%d", &choice);
 
@@ -68,9 +70,47 @@ int main()
                 fclose(file);
             }
         }
+	
+	// Close file
+	else if (choice == 3)
+	{
+	    printf("Enter file name to close: ");
+	    scanf("%s", filename);
 
-        // Exit
-        else if (choice == 3)
+	    FILE *file = fopen(filename, "r");
+
+	    if (file == NULL)
+	    {
+		printf("File not found.\n");
+	    }
+	    else
+	    {
+		fclose(file);
+		printf("File closed successfully.\n");
+	    }
+	}
+
+	// Search file
+	else if (choice == 4)
+	{
+	    printf("Enter file name to search: ");
+    	    scanf("%s", filename);
+
+	    FILE *file = fopen(filename, "r");
+   	    
+	    if (file == NULL)
+   	    {
+       		printf("File not found.\n");
+    	    }
+    	    else
+    	    {
+        	fclose(file);
+        	printf("File found.\n");
+   	    }
+	}
+       
+	// Exit
+        else if (choice == 5)
         {
             printf("Exiting program\n");
             break;
